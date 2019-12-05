@@ -1,0 +1,47 @@
+<div class='component-content'>
+    <div class='lefthalf'>
+        <span class='component-title'>{{title}} </span>
+    </div>
+</div>
+<p *ngIf='!request'>Loading....</p>
+<div *ngIf='request'>
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Total</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>{{request.id}}</td>
+            <td>{{request.description}}</td>
+            <td>{{request.total}}</td>
+            <td>{{request.status}}</td>
+        </tr>
+    </table>
+</div>
+<div class='component-content'>
+    <div class='lefthalf'>
+        <span class='component-title'>{{lineTitle}} </span>
+        <span><a routerLink='/line-items/create'>
+            <img id='createnew' width='20' height='20' src='assets/add-icon.png' title='Add New'></a>
+    </span>
+    </div>
+</div>
+<div >
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Product</th>
+            <th>Quantity</th>
+        </tr>
+        <h1 class="loadingResult" *ngIf='(lines < 1)'>No lineitems yet. Please create a new one.</h1>
+        
+        <tr *ngFor='let l of lines | sort:sortCriteria:sortOrder'>
+            <td>{{l.id}}</td>
+            <td>{{l.product.name}}</td>
+            <td>{{l.quantity}}</td>
+        </tr>
+    
+    </table>
+</div>
