@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class='component-content'>
     <div class='lefthalf'>
         <span class='component-title'>{{title}}</span>
@@ -18,10 +19,10 @@
         <td>{{p.id}}</td>
         <td>{{p.name}}</td>
         <td>{{p.vendor.name}}</td>
-        <td>{{p.price}}</td>
+        <td>{{p.price | currency}}</td>
         <td><a routerLink='/products/detail/{{p.id}}'><img src='assets/details.png' width='20' height='20' title='Detail'></a> 
             |
-          <a routerLink='/products/edit/{{p.id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
+          <a *ngIf="loggedInUser.admin!=false" routerLink='/products/edit/{{p.id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
          </td>
     </tr>
 </table>

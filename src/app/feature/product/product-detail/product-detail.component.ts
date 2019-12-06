@@ -4,13 +4,15 @@ import { ProductService } from 'src/app/service/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Vendor } from 'src/app/model/vendor.class';
 import { VendorService } from 'src/app/service/vendor.service';
+import { SystemService } from 'src/app/service/system.service';
+import { BaseComponent } from '../../base/base.component';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent extends BaseComponent implements OnInit {
 
   product: Product = new Product;
   title: string = 'Product Detail';
@@ -20,9 +22,13 @@ export class ProductDetailComponent implements OnInit {
   constructor(private productSvc: ProductService,
     private vendorSvc: VendorService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    protected sysSvc: SystemService) {
+      super(sysSvc);
+     }
 
   ngOnInit() {
+    super.ngOnInit();
     this.route.params.subscribe(parms => this.id = parms['id']);
     this.productSvc.get(this.id).subscribe(jr => {
       this.product = jr.data as Product;

@@ -1,7 +1,8 @@
+<app-menu></app-menu>
 <div class='component-content'>
     <div class='lefthalf'>
         <span class='component-title'>{{title}}</span>
-        <span><a routerLink='/vendors/create'>
+        <span><a *ngIf="loggedInUser.admin!=false" routerLink='/vendors/create'>
                 <img id='createnew' width='20' height='20' src='assets/add-icon.png' title='Add New'></a>
         </span>
     </div>
@@ -17,8 +18,8 @@
         <td>{{v.name}}</td>
         <td><a routerLink='/vendors/detail/{{v.id}}'><img src='assets/details.png' width='20' height='20'
                     title='Detail'></a>
-            |
-            <a routerLink='/vendors/edit/{{v.id}}'><img src='assets/pencil-icon.png' width='20' height='20'
+            
+            <a *ngIf="loggedInUser.admin!=false" routerLink='/vendors/edit/{{v.id}}'> | <img src='assets/pencil-icon.png' width='20' height='20'
                     title='Edit'></a>
         </td>
     </tr>

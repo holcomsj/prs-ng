@@ -19,6 +19,9 @@ import { RequestEditComponent } from './feature/request/request-edit/request-edi
 import { RequestDetailComponent } from './feature/request/request-detail/request-detail.component';
 import { RequestLinesComponent } from './feature/request/request-lines/request-lines.component';
 import { LineItemCreateComponent } from './feature/line-item/line-item-create/line-item-create.component';
+import { LineItemEditComponent } from './feature/line-item/line-item-edit/line-item-edit.component';
+import { RequestReviewComponent } from './feature/request/request-review/request-review.component';
+import { RequestApproveComponent } from './feature/request/request-approve/request-approve.component';
 
 
 const routes: Routes = [
@@ -38,12 +41,15 @@ const routes: Routes = [
   {path: 'products/edit/:id', component: ProductEditComponent},
   {path: 'products/detail/:id', component: ProductDetailComponent},
   {path: 'requests/list', component: RequestListComponent},
+  {path: 'requests/review/:id', component: RequestReviewComponent},
+  {path: 'requests/approve/:id', component: RequestApproveComponent},
   {path: 'requests/create', component: RequestCreateComponent},
   {path: 'requests/edit/:id', component: RequestEditComponent},
   {path: 'requests/detail/:id', component: RequestDetailComponent},
   {path: 'requests/lines/:id', component: RequestLinesComponent},
-  {path: 'line-items/create', component: LineItemCreateComponent},
-  {path: '**', component: UserListComponent}
+  {path: 'line-items/create/:id', component: LineItemCreateComponent},
+  {path: 'line-items/edit/:id', component: LineItemEditComponent},
+  {path: '**', component: UserLoginComponent}
 ];
 
 @NgModule({

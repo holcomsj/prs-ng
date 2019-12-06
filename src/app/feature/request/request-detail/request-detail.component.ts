@@ -25,8 +25,8 @@ export class RequestDetailComponent extends BaseComponent implements OnInit {
      }
 
   ngOnInit() {
-    // super.ngOnInit();
-    // this.request.user = this.sysSvc.loggedInUser;
+  super.ngOnInit();
+  this.request.user = this.sysSvc.loggedInUser;
 
     this.route.params.subscribe(parms => this.id = parms['id']);
     this.requestSvc.get(this.id).subscribe(jr => {

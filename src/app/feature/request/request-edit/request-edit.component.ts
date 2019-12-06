@@ -47,7 +47,7 @@ export class RequestEditComponent extends BaseComponent implements OnInit {
 
 
   save(): void {
-    this.requestSvc.update(this.request).subscribe(() => {
+    this.requestSvc.update(this.request).subscribe(jr => {
       console.log("saved request...");
       console.log(this.request);
       this.router.navigateByUrl('/requests/list');

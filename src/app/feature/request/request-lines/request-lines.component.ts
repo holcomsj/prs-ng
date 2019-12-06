@@ -23,17 +23,44 @@ export class RequestLinesComponent implements OnInit {
     private lineitemSvc: LineItemService) { }
 
   ngOnInit() {
+   this.lineRequest();
+
+
+  }
+  delete(lineId: number) {
+    this.lineitemSvc.delete(lineId).subscribe(jr => {
+      if (jr.errors != null) {
+        console.log("Error deleting lineitems: " + jr.errors);
+      }
+      this.lineRequest();
+      
+    });
+  }
+  review(){
+    this.requestSvc.updateForReview(this.request).subscribe(jr => {
+      this.router.navigateByUrl('/requests/list');
+
+    })
+  }
+  reopen(request: Request){
+    this.requestSvc.updateForReopen(this.request).subscribe(jr => {
+      this.lineRequest();
+    });
+  }
+  
+
+  lineRequest(){
     this.route.params.subscribe(parms => this.id = parms['id']);
     this.requestSvc.get(this.id).subscribe(jr => {
-      this.request = jr.data as Request;});
-     
-      this.lineitemSvc.getForReq(this.id).subscribe(jr => {
-        this.lines = jr.data as LineItem[];
-        console.log(this.lines);
+      this.request = jr.data as Request;
     });
 
-    
-  }
+    this.lineitemSvc.getForReq(this.id).subscribe(jr => {
+      this.lines = jr.data as LineItem[];
+      console.log(this.lines);
+    });
+}
+
 }
 
 

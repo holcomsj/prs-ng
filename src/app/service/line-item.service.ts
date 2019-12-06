@@ -19,7 +19,7 @@ export class LineItemService {
     return this.http.get(this.url + id) as Observable<JsonResponse>;
   }
   getForReq(id: number): Observable<JsonResponse> {
-    return this.http.get(this.url + 'lines-for-pr/'+id) as Observable<JsonResponse>;
+    return this.http.get(this.url + 'lines-for-pr/' + id) as Observable<JsonResponse>;
   }
   save(lineitem: LineItem): Observable<JsonResponse> {
     return this.http.post(this.url, lineitem) as Observable<JsonResponse>;

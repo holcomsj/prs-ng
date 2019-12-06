@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class='component-content'>
     <div class='lefthalf'>
         <span class='component-title'>{{title}} </span>
@@ -7,16 +8,7 @@
 <div *ngIf='lineitem'>
     <main class="single">
         <table class="table table-sm">
-            <tr>
-                <td>
-                    Request:
-                </td>
-                <td>
-                    <select [(ngModel)]="lineitem.request" class="rounded">
-                        <option *ngFor='let r of requests' [ngValue]='r'>{{r.id}}</option>
-                    </select>
-                </td>
-            </tr>
+           
             <tr>
                 <td>
                     Product:

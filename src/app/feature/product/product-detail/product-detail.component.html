@@ -1,6 +1,8 @@
+<app-menu></app-menu>
 <div class='component-content'>
     <div class='lefthalf'>
         <span class='component-title'>{{title}} </span>
+        <span><a routerLink="/products/list">Return to products...</a></span>
     </div>
 </div>
 <p *ngIf = '!product'>Loading....</p>
@@ -12,7 +14,7 @@
                     Part Number:
                 </td>
                 <td>
-                    <input [(ngModel)]='product.partNumber' class="rounded" type="text" disabled>
+                    {{product.partNumber}}
                 </td>
             </tr>
             <tr>
@@ -20,7 +22,7 @@
                     Product Name:
                 </td>
                 <td>
-                    <input [(ngModel)]='product.name' class="rounded" type="text" disabled>
+                    {{product.name}}
                 </td>
             </tr>
             <tr>
@@ -28,9 +30,7 @@
                     Vendor:
                 </td>
                 <td>
-                    <select [(ngModel)]="product.vendor" class="rounded" [compareWith]="compVendor" disabled>
-                        <option *ngFor='let v of vendors' [ngValue]='v'>{{v.name}}</option>
-                    </select>
+                    {{product.vendor.name}}
                 </td>
             </tr>
             <tr>
@@ -38,7 +38,7 @@
                     Price:
                 </td>
                 <td>
-                    <input [(ngModel)]='product.price' type="number" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="rounded" disabled>
+                    {{product.price | currency}}
                 </td>
             </tr>
             <tr>
@@ -46,7 +46,7 @@
                    Unit:
                 </td>
                 <td>
-                    <input [(ngModel)]='product.unit' class="rounded" type="text" placeholder="If none, leave blank" disabled>
+                    {{product.unit}}
                 </td>
             </tr>
             <tr>
@@ -54,13 +54,13 @@
                     Photo Path Url:
                 </td>
                 <td>
-                    <input [(ngModel)]='product.photoPath' class="rounded" type="text" placeholder="If none, leave blank" disabled>
+                   {{product.photoPath}}
                 </td>
             </tr>
          
         </table>
     </main>
-    <span >
+    <span *ngIf="loggedInUser.admin!=false" >
         <span><a routerLink="/products/edit/{{product.id}}" class="btn btn-sm btn-warning">Edit</a></span>
         <span> | <button (click)="delete()" class="btn btn-sm btn-danger">Delete</button></span>
     </span>

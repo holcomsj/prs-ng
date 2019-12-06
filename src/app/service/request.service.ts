@@ -15,6 +15,9 @@ export class RequestService {
   list(): Observable<JsonResponse> {
     return this.http.get(this.url) as Observable<JsonResponse>;
   }
+  listForReview(id: number): Observable<JsonResponse> {
+    return this.http.get(this.url + 'list-review/' + id) as Observable<JsonResponse>;
+  }
   get(id: number): Observable<JsonResponse> {
     return this.http.get(this.url + id) as Observable<JsonResponse>;
   }
@@ -23,6 +26,18 @@ export class RequestService {
   }
   update(request: Request): Observable<JsonResponse> {
     return this.http.put(this.url, request) as Observable<JsonResponse>;
+  }
+  updateForReview(request: Request): Observable<JsonResponse> {
+    return this.http.put(this.url + 'submit-review', request) as Observable<JsonResponse>;
+  }
+  updateForReopen(request: Request): Observable<JsonResponse> {
+    return this.http.put(this.url + 'reopen', request) as Observable<JsonResponse>;
+  }
+  approve(request: Request): Observable<JsonResponse> {
+    return this.http.put(this.url + 'approve', request) as Observable<JsonResponse>;
+  }
+  reject(request: Request): Observable<JsonResponse> {
+    return this.http.put(this.url + 'reject', request) as Observable<JsonResponse>;
   }
   delete(id: number): Observable<JsonResponse> {
     return this.http.delete(this.url + id) as Observable<JsonResponse>;

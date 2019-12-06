@@ -1,6 +1,8 @@
+<app-menu></app-menu>
 <div class='component-content'>
     <div class='lefthalf'>
         <span class='component-title'>{{title}} </span>
+        <span><a routerLink="/users/list">Return to users...</a></span>
     </div>
 </div>
 <p *ngIf = '!user'>Loading....</p>
@@ -12,7 +14,7 @@
                     First Name:
                 </td>
                 <td>
-                    <input [(ngModel)]='user.firstName' class="rounded" type="text" disabled>
+                    {{user.firstName}}
                 </td>
             </tr>
             <tr>
@@ -20,7 +22,7 @@
                     Last Name:
                 </td>
                 <td>
-                    <input [(ngModel)]='user.lastName' class="rounded" type="text" disabled>
+                   {{user.lastName}}
                 </td>
             </tr>
             <tr>
@@ -28,7 +30,7 @@
                     Username:
                 </td>
                 <td>
-                    <input [(ngModel)]='user.userName' class="rounded" type="text" disabled>
+                   {{user.userName}}
                 </td>
             </tr>
             <tr>
@@ -36,7 +38,7 @@
                     Password:
                 </td>
                 <td>
-                    <input [(ngModel)]='user.password' class="rounded" type="text" disabled>
+                   {{user.password}}
                 </td>
             </tr>
             <tr>
@@ -44,7 +46,7 @@
                     Phone Number:
                 </td>
                 <td>
-                    <input [(ngModel)]='user.phoneNumber' class="rounded" type="text" disabled>
+                    {{user.phoneNumber}}
                 </td>
             </tr>
             <tr>
@@ -52,7 +54,7 @@
                     Email:
                 </td>
                 <td>
-                    <input [(ngModel)]='user.email' class="rounded" type="text" disabled>
+                    {{user.email}}
                 </td>
             </tr>
             <tr>
@@ -60,19 +62,19 @@
                     Administrative Access:
                 </td>
                 <td>
-                <input [(ngModel)]='user.admin' class='rounded' type="checkbox" disabled>
+                {{user.admin}}
             </td></tr>
             <tr>
                 <td>
                     Reviewer Privilages:
                 </td>
                 <td>
-                    <input [(ngModel)]='user.reviewer' class='rounded' type="checkbox" disabled>
+                    {{user.reviewer}}
                 </td>
             </tr>
         </table>
     </main>
-    <span >
+    <span *ngIf="loggedInUser.admin!=false" >
         <span><a routerLink="/users/edit/{{user.id}}" class="btn btn-sm btn-warning">Edit</a></span>
         <span> | <button (click)="delete()" class="btn btn-sm btn-danger">Delete</button></span>
     </span>

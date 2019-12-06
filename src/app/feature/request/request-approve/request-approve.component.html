@@ -38,9 +38,8 @@
             <th>Quantity</th>
             <th>Price</th>
             <th>Line Total</th>
-            <th>Action</th>
         </tr>
-        <h1 class="loadingResult" *ngIf='(lines < 1)'>No lineitems yet. Please create a new one.</h1>
+        
 
         <tr *ngFor='let l of lines | sort:sortCriteria:sortOrder'>
             <td>{{l.id}}</td>
@@ -48,16 +47,10 @@
             <td>{{l.quantity}}</td>
             <td>{{l.product.price | currency}}</td>
             <td>{{l.quantity * l.product.price | currency}}</td>
-            <td><span *ngIf='l.request.status == "New"'>
-                    <a routerLink='/line-items/edit/{{l.id}}'><img src='assets/pencil-icon.png' width='20' height='20'
-                            title='Edit'></a> |
-                    <a (click)="delete(l.id)"><img src="assets/delete.jpg" alt="delete" width="20" height="20"></a>
-
-                </span></td>
+           
         </tr>
-    </table><span *ngIf='request.status == "New"' >
-    <button (click)='review()' *ngIf='(lines != 0) '>Submit For Review</button>
-</span>
-<span *ngIf='request.status == "Rejected"' >
-        <button (click)='reopen(this.request)'>Reopen</button>
-    </span></div>
+    </table>
+    <span><button (click)='approve(request)'>Approve</button> |
+        <button *ngIf='request.reasonForRejection' (click)='reject(request)'>Reject</button></span> <br>
+        <span><input [(ngModel)]='request.reasonForRejection' class="rounded" type="text"></span>
+</div>

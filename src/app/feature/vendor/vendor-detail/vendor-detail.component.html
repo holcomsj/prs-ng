@@ -1,6 +1,8 @@
+<app-menu></app-menu>
 <div class='component-content'>
     <div class='lefthalf'>
         <span class='component-title'>{{title}} </span>
+        <span><a routerLink="/vendors/list">Return to vendors...</a></span>
     </div>
 </div>
 <p *ngIf='!vendor'>Loading....</p>
@@ -12,8 +14,7 @@
                     Company Code:
                 </td>
                 <td>
-                    <input [(ngModel)]='vendor.code' class="rounded" type="text"
-                    disabled>
+                  {{vendor.code}}
                 </td>
             </tr>
             <tr>
@@ -21,7 +22,7 @@
                     Company Name:
                 </td>
                 <td>
-                    <input [(ngModel)]='vendor.name' class="rounded" type="text" disabled>
+                   {{vendor.name}}
                 </td>
             </tr>
             <tr>
@@ -29,7 +30,7 @@
                     Street Address:
                 </td>
                 <td>
-                    <input [(ngModel)]='vendor.address' class="rounded" type="text" disabled>
+                   {{vendor.address}}
                 </td>
             </tr>
             <tr>
@@ -37,7 +38,7 @@
                     City:
                 </td>
                 <td>
-                    <input [(ngModel)]='vendor.city' class="rounded" type="text" disabled>
+                   {{vendor.city}}
                 </td>
             </tr>
             <tr>
@@ -45,7 +46,7 @@
                     State:
                 </td>
                 <td>
-                    <input [(ngModel)]='vendor.state' class="rounded" type="text" disabled>
+                   {{vendor.state}}
                 </td>
             </tr>
             <tr>
@@ -53,7 +54,7 @@
                     Zip Code:
                 </td>
                 <td>
-                    <input [(ngModel)]='vendor.zip' class="rounded" type="text" disabled>
+                    {{vendor.zip}}
                 </td>
             </tr>
             <tr>
@@ -61,7 +62,7 @@
                     Phone Number:
                 </td>
                 <td>
-                    <input [(ngModel)]='vendor.phoneNumber' class="rounded" type="text"disabled>
+                    {{vendor.phoneNumber}}
                 </td>
             </tr>
             <tr>
@@ -69,13 +70,13 @@
                     Email:
                 </td>
                 <td>
-                    <input [(ngModel)]='vendor.email' class="rounded" type="text"disabled>
+                    {{vendor.email}}
                 </td>
             </tr>
 
         </table>
     </main>
-    <span >
+    <span *ngIf="loggedInUser.admin!=false">
         <span><a routerLink="/vendors/edit/{{vendor.id}}" class="btn btn-sm btn-warning">Edit</a></span>
         <span> | <button (click)="delete()" class="btn btn-sm btn-danger">Delete</button></span>
     </span>

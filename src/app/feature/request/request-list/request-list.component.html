@@ -1,7 +1,8 @@
+<app-menu></app-menu>
 <div class='component-content'>
     <div class='lefthalf'>
         <span class='component-title'>{{title}}</span>
-        <span><a routerLink='/requests/create'>
+        <span><a *ngIf="loggedInUser.admin!=false" routerLink='/requests/create'>
                 <img id='createnew' width='20' height='20' src='assets/add-icon.png' title='Add New'></a>
         </span>
     </div>
@@ -18,14 +19,17 @@
     <tr *ngFor='let r of requests | sort:sortCriteria:sortOrder'>
         <td>{{r.id}}</td>
         <td>{{r.user.lastName}} {{r.user.firstName}}</td>
-        <td>{{r.submittedDate}}</td>
-        <td>{{r.total}}</td>
+        <td>{{r.submittedDate | date:'MM/dd/yyyy @ h:mma'}}</td>
+        <td>{{r.total | currency}}</td>
         <td>{{r.status}}</td>
-        <td><a routerLink='/requests/detail/{{r.id}}'><img src='assets/details.png' width='20' height='20' title='Detail'></a> 
-            |
-            <a routerLink='/requests/lines/{{r.id}}'><img src="assets/lines.png" width="20" height="20" title="Lines"></a>
-            |
-          <a routerLink='/requests/edit/{{r.id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
-         </td>
+        <td><a routerLink='/requests/detail/{{r.id}}'><img src='assets/details.png' width='20' height='20'
+                    title='Detail'></a>
+
+            <a *ngIf='loggedInUser.id == r.user.id' routerLink='/requests/lines/{{r.id}}'> | <img src="assets/lines.png"
+                    width="20" height="20" title="Lines"></a>
+
+            <a *ngIf="loggedInUser.admin!=false" routerLink='/requests/edit/{{r.id}}'> | <img
+                    src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
+        </td>
     </tr>
 </table>

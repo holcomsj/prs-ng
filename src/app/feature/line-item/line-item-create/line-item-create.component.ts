@@ -18,8 +18,8 @@ export class LineItemCreateComponent implements OnInit {
   title: string = 'LineItem Create';
   products: Product[] = [];
   id: number = 0;
-  requests: Request[] = [];
-  
+  request: Request = new Request();
+
 
   constructor(private lineitemSvc: LineItemService,
     private router: Router,
@@ -32,9 +32,11 @@ export class LineItemCreateComponent implements OnInit {
       this.products = jr.data as Product[];
       console.log("products: ", this.products);
     });
-    this.requestSvc.list().subscribe(jr => {
-      this.requests = jr.data as Request[];
-      console.log("requests: ", this.requests);
+    this.route.params.subscribe(parms => this.id = parms['id']);
+    this.requestSvc.get(this.id).subscribe(jr => {
+      this.request = jr.data as Request;
+      this.lineitem.request = this.request;
+      
     });
   }
 
@@ -43,7 +45,7 @@ export class LineItemCreateComponent implements OnInit {
     this.lineitemSvc.save(this.lineitem).subscribe(jr => {
       console.log("saved lineitem...");
       console.log(this.lineitem);
-      this.router.navigateByUrl('/requests/lines/:id');
+      this.router.navigateByUrl('/requests/lines/' + this.id);
     });
   }
 }

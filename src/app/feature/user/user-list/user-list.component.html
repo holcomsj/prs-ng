@@ -1,7 +1,9 @@
+<app-menu></app-menu>
+
 <div class='component-content'>
     <div class='lefthalf'>
         <span class='component-title'>{{title}}</span>
-        <span><a routerLink='/users/create'>
+        <span><a *ngIf="loggedInUser.admin!=false" routerLink='/users/create'>
                 <img id='createnew' width='20' height='20' src='assets/add-icon.png' title='Add New'></a>
         </span>
     </div>
@@ -17,9 +19,11 @@
         <td>{{u.id}}</td>
         <td>{{u.userName}}</td>
         <td>{{u.lastName}}, {{u.firstName}}</td>
-        <td><a routerLink='/users/detail/{{u.id}}'><img src='assets/details.png' width='20' height='20' title='Detail'></a> 
-            |
-          <a routerLink='/users/edit/{{u.id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
-         </td>
+        <td><a routerLink='/users/detail/{{u.id}}'><img src='assets/details.png' width='20' height='20'
+                    title='Detail'></a>
+            
+            <a *ngIf="loggedInUser.admin!=false" routerLink='/users/edit/{{u.id}}'> | <img src='assets/pencil-icon.png'
+                    width='20' height='20' title='Edit'></a>
+        </td>
     </tr>
 </table>
