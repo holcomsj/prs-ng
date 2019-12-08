@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItems } from 'src/app/model/menu-items.class';
 import { SystemService } from 'src/app/service/system.service';
-import { User } from 'src/app/model/user.class';
 import { BaseComponent } from 'src/app/feature/base/base.component';
 
 @Component({
@@ -19,14 +18,25 @@ export class MenuComponent extends BaseComponent implements OnInit {
 
   ngOnInit() {
     super.ngOnInit();
+    if (this.loggedInUser.reviewer == true){
+      this.menuItems = [
+        new MenuItems('User', '/users/list', 'User List'),
+        new MenuItems('Vendor', '/vendors/list', 'Vendor List'),
+        new MenuItems('Product', '/products/list', 'Product List'),
+        new MenuItems('Request', '/requests/list', 'Request List'),
+        new MenuItems('Review', '/requests/review/' + this.sysSvc.loggedInUser.id, 'Review List'),
+        new MenuItems("Logout", '/users/login', 'User Login')
+      ];
+    }
+    else {
     this.menuItems = [
       new MenuItems('User', '/users/list', 'User List'),
       new MenuItems('Vendor', '/vendors/list', 'Vendor List'),
       new MenuItems('Product', '/products/list', 'Product List'),
       new MenuItems('Request', '/requests/list', 'Request List'),
-      new MenuItems('Review', '/requests/review/' + this.sysSvc.loggedInUser.id, 'Review List'),
       new MenuItems("Logout", '/users/login', 'User Login')
     ];
+  }
     
   }
 
