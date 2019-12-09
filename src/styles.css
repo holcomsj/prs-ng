@@ -2,4 +2,18 @@
 background {
     color: lightgray;
 }
+footer{
+    position: absolute;
+    width: 100%;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  #content-wrap {
+    padding-bottom: 2.5rem;
+}    
+  
 

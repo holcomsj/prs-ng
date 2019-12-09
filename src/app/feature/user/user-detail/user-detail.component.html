@@ -1,81 +1,88 @@
 <app-menu></app-menu>
-<div class='component-content'>
-    <div class='lefthalf'>
-        <span class='component-title'>{{title}} </span>
-        <span><a routerLink="/users/list">Return to users...</a></span>
+<div id="page-container">
+    <div id="content-wrap">
+        <div class='component-content'>
+            <div class='lefthalf'>
+                <span class='component-title'>{{title}} </span>
+                <span><a routerLink="/users/list">Return to users...</a></span>
+            </div>
+        </div>
+        <p *ngIf='!user'>Loading....</p>
+        <div *ngIf='user'>
+            <main class="single">
+                <table class="table table-sm">
+                    <tr>
+                        <td>
+                            First Name:
+                        </td>
+                        <td>
+                            {{user.firstName}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Last Name:
+                        </td>
+                        <td>
+                            {{user.lastName}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Username:
+                        </td>
+                        <td>
+                            {{user.userName}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Password:
+                        </td>
+                        <td>
+                            {{user.password}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Phone Number:
+                        </td>
+                        <td>
+                            {{user.phoneNumber}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Email:
+                        </td>
+                        <td>
+                            {{user.email}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Administrative Access:
+                        </td>
+                        <td>
+                            {{user.admin}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Reviewer Privilages:
+                        </td>
+                        <td>
+                            {{user.reviewer}}
+                        </td>
+                    </tr>
+                </table>
+            </main>
+            <span *ngIf="this.user.id==loggedInUser.id || loggedInUser.admin!=false">
+                <span><a routerLink="/users/edit/{{user.id}}" class="btn btn-sm btn-warning">Edit</a></span>
+                <span> <button *ngIf="loggedInUser.admin!=false" (click)="delete()" class="btn btn-sm btn-danger"> 
+                        Delete</button></span>
+            </span>
+        </div>
     </div>
 </div>
-<p *ngIf = '!user'>Loading....</p>
-<div *ngIf='user'>
-    <main class="single">
-        <table class="table table-sm">
-            <tr>
-                <td>
-                    First Name:
-                </td>
-                <td>
-                    {{user.firstName}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Last Name:
-                </td>
-                <td>
-                   {{user.lastName}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Username:
-                </td>
-                <td>
-                   {{user.userName}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Password:
-                </td>
-                <td>
-                   {{user.password}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Phone Number:
-                </td>
-                <td>
-                    {{user.phoneNumber}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Email:
-                </td>
-                <td>
-                    {{user.email}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Administrative Access:
-                </td>
-                <td>
-                {{user.admin}}
-            </td></tr>
-            <tr>
-                <td>
-                    Reviewer Privilages:
-                </td>
-                <td>
-                    {{user.reviewer}}
-                </td>
-            </tr>
-        </table>
-    </main>
-    <span *ngIf="this.user.id==loggedInUser.id" >
-        <span><a routerLink="/users/edit/{{user.id}}" class="btn btn-sm btn-warning">Edit</a></span>
-        <span>  <button *ngIf="loggedInUser.admin!=false" (click)="delete()" class="btn btn-sm btn-danger"> | Delete</button></span>
-    </span>
-</div>
+<app-footer></app-footer>

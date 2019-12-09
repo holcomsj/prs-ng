@@ -30,6 +30,9 @@ import { RequestLinesComponent } from './feature/request/request-lines/request-l
 import { LineItemEditComponent } from './feature/line-item/line-item-edit/line-item-edit.component';
 import { RequestReviewComponent } from './feature/request/request-review/request-review.component';
 import { RequestApproveComponent } from './feature/request/request-approve/request-approve.component';
+import { FooterComponent } from './core/footer/footer.component';
+import { AboutComponent } from './feature/static/about/about.component';
+import { ResourcesComponent } from './feature/static/resources/resources.component';
 
 
 @NgModule({
@@ -59,7 +62,10 @@ import { RequestApproveComponent } from './feature/request/request-approve/reque
     RequestLinesComponent,
     LineItemEditComponent,
     RequestReviewComponent,
-    RequestApproveComponent
+    RequestApproveComponent,
+    FooterComponent,
+    AboutComponent,
+    ResourcesComponent
   ],
   imports: [
     BrowserModule,

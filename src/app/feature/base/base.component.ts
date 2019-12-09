@@ -21,10 +21,7 @@ export class BaseComponent implements OnInit {
     this.loggedInUser = this.sysSvc.loggedInUser;
     this.admin = this.sysSvc.admin();
     this.reviewer = this.sysSvc.reviewer();
-    console.log("Verify we have a logged in user");
-    console.log("user:",this.loggedInUser);
-    console.log("admin?:",this.admin);
-    console.log("reviewer:",this.reviewer);
+ 
   }
   sortBy(column: string): void {
     if (column == this.sortCriteria) {

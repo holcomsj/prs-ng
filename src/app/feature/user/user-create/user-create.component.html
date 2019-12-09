@@ -1,79 +1,84 @@
 <app-menu></app-menu>
-<div class='component-content'>
-    <div class='lefthalf'>
-        <span class='component-title'>{{title}} </span>
-        <span><a routerLink="/users/list">Return to users...</a></span>
+<div id="page-container">
+    <div id="content-wrap">
+        <div class='component-content'>
+            <div class='lefthalf'>
+                <span class='component-title'>{{title}} </span>
+                <span><a routerLink="/users/list">Return to users...</a></span>
+            </div>
+        </div>
+        <p *ngIf='!user'>Loading....</p>
+        <div *ngIf='user'>
+            <main class="single">
+                <table class="table table-sm">
+                    <tr>
+                        <td>
+                            First Name:
+                        </td>
+                        <td>
+                            <input [(ngModel)]='user.firstName' class="rounded" type="text" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Last Name:
+                        </td>
+                        <td>
+                            <input [(ngModel)]='user.lastName' class="rounded" type="text" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Username:
+                        </td>
+                        <td>
+                            <input [(ngModel)]='user.userName' class="rounded" type="text" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Password:
+                        </td>
+                        <td>
+                            <input [(ngModel)]='user.password' class="rounded" type="text" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Phone Number:
+                        </td>
+                        <td>
+                            <input [(ngModel)]='user.phoneNumber' class="rounded" type="text" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Email:
+                        </td>
+                        <td>
+                            <input [(ngModel)]='user.email' class="rounded" type="text" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Administrative Access:
+                        </td>
+                        <td>
+                            <input [(ngModel)]='user.admin' class='rounded' type="checkbox">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Reviewer Privilages:
+                        </td>
+                        <td>
+                            <input [(ngModel)]='user.reviewer' class='rounded' type="checkbox">
+                        </td>
+                    </tr>
+                </table>
+            </main>
+            <span><button (click)="save()" class="btn btn-sm btn-primary">Save</button></span>
+        </div>
     </div>
 </div>
-<p *ngIf = '!user'>Loading....</p>
-<div *ngIf='user'>
-    <main class="single">
-        <table class="table table-sm">
-            <tr>
-                <td>
-                    First Name:
-                </td>
-                <td>
-                    <input [(ngModel)]='user.firstName' class="rounded" type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Last Name:
-                </td>
-                <td>
-                    <input [(ngModel)]='user.lastName' class="rounded" type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Username:
-                </td>
-                <td>
-                    <input [(ngModel)]='user.userName' class="rounded" type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Password:
-                </td>
-                <td>
-                    <input [(ngModel)]='user.password' class="rounded" type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Phone Number:
-                </td>
-                <td>
-                    <input [(ngModel)]='user.phoneNumber' class="rounded" type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Email:
-                </td>
-                <td>
-                    <input [(ngModel)]='user.email' class="rounded" type="text">
-                </td>
-            </tr>
-            <tr>
-            <td>
-                Administrative Access:
-            </td>
-            <td>
-            <input [(ngModel)]='user.admin' class='rounded' type="checkbox">
-        </td>
-    </tr>
-        <tr>
-            <td>
-                Reviewer Privilages:
-            </td>
-            <td>
-                <input [(ngModel)]='user.reviewer' class='rounded' type="checkbox">
-            </td>
-        </tr>
-        </table>
-    </main>
-    <span><button (click)="save()" class="btn btn-sm btn-primary">Save</button></span>
-</div>
+<app-footer></app-footer>

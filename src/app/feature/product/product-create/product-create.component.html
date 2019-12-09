@@ -1,66 +1,74 @@
 <app-menu></app-menu>
-<div class='component-content'>
-    <div class='lefthalf'>
-        <span class='component-title'>{{title}} </span>
-        <span><a routerLink="/products/list">Return to products...</a></span>
+<div id="page-container">
+    <div id="content-wrap">
+        <div class='component-content'>
+            <div class='lefthalf'>
+                <span class='component-title'>{{title}} </span>
+                <span><a routerLink="/products/list">Return to products...</a></span>
+            </div>
+        </div>
+        <p *ngIf='!product'>Loading....</p>
+        <div *ngIf='product'>
+            <main class="single">
+                <table class="table table-sm">
+                    <tr>
+                        <td>
+                            Product Code:
+                        </td>
+                        <td>
+                            <input [(ngModel)]='product.partNumber' class="rounded" type="text" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Product Name:
+                        </td>
+                        <td>
+                            <input [(ngModel)]='product.name' class="rounded" type="text" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Vendor:
+                        </td>
+                        <td>
+                            <select [(ngModel)]="product.vendor" class="rounded" required>
+                                <option *ngFor='let v of vendors' [ngValue]='v'>{{v.name}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Price:
+                        </td>
+                        <td>
+                            <input [(ngModel)]='product.price' type="number" min="0" step="0.01"
+                                data-number-to-fixed="2" data-number-stepfactor="100" class="rounded" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Unit:
+                        </td>
+                        <td>
+                            <input [(ngModel)]='product.unit' class="rounded" type="text"
+                                placeholder="If none, leave blank">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Photo Path Url:
+                        </td>
+                        <td>
+                            <input [(ngModel)]='product.photoPath' class="rounded" type="text"
+                                placeholder="If none, leave blank">
+                        </td>
+                    </tr>
+
+                </table>
+            </main>
+            <span><button (click)="save()" class="btn btn-sm btn-primary">Save</button></span>
+        </div>
     </div>
 </div>
-<p *ngIf = '!product'>Loading....</p>
-<div *ngIf='product'>
-    <main class="single">
-        <table class="table table-sm">
-            <tr>
-                <td>
-                    Product Code:
-                </td>
-                <td>
-                    <input [(ngModel)]='product.partNumber' class="rounded" type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Product Name:
-                </td>
-                <td>
-                    <input [(ngModel)]='product.name' class="rounded" type="text">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Vendor:
-                </td>
-                <td>
-                    <select [(ngModel)]="product.vendor" class="rounded">
-                        <option *ngFor='let v of vendors' [ngValue]='v'>{{v.name}}</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Price:
-                </td>
-                <td>
-                    <input [(ngModel)]='product.price' type="number" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="rounded">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   Unit:
-                </td>
-                <td>
-                    <input [(ngModel)]='product.unit' class="rounded" type="text" placeholder="If none, leave blank">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Photo Path Url:
-                </td>
-                <td>
-                    <input [(ngModel)]='product.photoPath' class="rounded" type="text" placeholder="If none, leave blank">
-                </td>
-            </tr>
-         
-        </table>
-    </main>
-    <span><button (click)="save()" class="btn btn-sm btn-primary">Save</button></span>
-</div>
+<app-footer></app-footer>

@@ -30,10 +30,8 @@ export class UserLoginComponent extends BaseComponent implements OnInit {
   }
 
   login() {
-    console.log("login called for user:", this.user);
     this.userSvc.login(this.user)
       .subscribe(jr => {
-        console.log("jr:", jr);
         if (jr.errors == null) {
           if (jr.data == null) {
             // no error but still no user???

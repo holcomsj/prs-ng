@@ -22,6 +22,8 @@ import { LineItemCreateComponent } from './feature/line-item/line-item-create/li
 import { LineItemEditComponent } from './feature/line-item/line-item-edit/line-item-edit.component';
 import { RequestReviewComponent } from './feature/request/request-review/request-review.component';
 import { RequestApproveComponent } from './feature/request/request-approve/request-approve.component';
+import { AboutComponent } from './feature/static/about/about.component';
+import { ResourcesComponent } from './feature/static/resources/resources.component';
 
 
 const routes: Routes = [
@@ -49,6 +51,8 @@ const routes: Routes = [
   {path: 'requests/lines/:id', component: RequestLinesComponent},
   {path: 'line-items/create/:id', component: LineItemCreateComponent},
   {path: 'line-items/edit/:id', component: LineItemEditComponent},
+  {path: 'static/about', component: AboutComponent},
+  {path: 'static/resources', component: ResourcesComponent},
   {path: '**', component: UserLoginComponent}
 ];
 

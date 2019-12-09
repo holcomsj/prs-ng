@@ -1,83 +1,88 @@
 <app-menu></app-menu>
-<div class='component-content'>
-    <div class='lefthalf'>
-        <span class='component-title'>{{title}} </span>
-        <span><a routerLink="/vendors/list">Return to vendors...</a></span>
+<div id="page-container">
+    <div id="content-wrap">
+        <div class='component-content'>
+            <div class='lefthalf'>
+                <span class='component-title'>{{title}} </span>
+                <span><a routerLink="/vendors/list">Return to vendors...</a></span>
+            </div>
+        </div>
+        <p *ngIf='!vendor'>Loading....</p>
+        <div *ngIf='vendor'>
+            <main class="single">
+                <table class="table table-sm">
+                    <tr>
+                        <td>
+                            Company Code:
+                        </td>
+                        <td>
+                            {{vendor.code}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Company Name:
+                        </td>
+                        <td>
+                            {{vendor.name}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Street Address:
+                        </td>
+                        <td>
+                            {{vendor.address}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            City:
+                        </td>
+                        <td>
+                            {{vendor.city}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            State:
+                        </td>
+                        <td>
+                            {{vendor.state}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Zip Code:
+                        </td>
+                        <td>
+                            {{vendor.zip}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Phone Number:
+                        </td>
+                        <td>
+                            {{vendor.phoneNumber}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Email:
+                        </td>
+                        <td>
+                            {{vendor.email}}
+                        </td>
+                    </tr>
+
+                </table>
+            </main>
+            <span *ngIf="loggedInUser.admin!=false">
+                <span><a routerLink="/vendors/edit/{{vendor.id}}" class="btn btn-sm btn-warning">Edit</a></span>
+                <span> | <button (click)="delete()" class="btn btn-sm btn-danger">Delete</button></span>
+            </span>
+        </div>
     </div>
 </div>
-<p *ngIf='!vendor'>Loading....</p>
-<div *ngIf='vendor'>
-    <main class="single">
-        <table class="table table-sm">
-            <tr>
-                <td>
-                    Company Code:
-                </td>
-                <td>
-                  {{vendor.code}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Company Name:
-                </td>
-                <td>
-                   {{vendor.name}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Street Address:
-                </td>
-                <td>
-                   {{vendor.address}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    City:
-                </td>
-                <td>
-                   {{vendor.city}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    State:
-                </td>
-                <td>
-                   {{vendor.state}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Zip Code:
-                </td>
-                <td>
-                    {{vendor.zip}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Phone Number:
-                </td>
-                <td>
-                    {{vendor.phoneNumber}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Email:
-                </td>
-                <td>
-                    {{vendor.email}}
-                </td>
-            </tr>
-
-        </table>
-    </main>
-    <span *ngIf="loggedInUser.admin!=false">
-        <span><a routerLink="/vendors/edit/{{vendor.id}}" class="btn btn-sm btn-warning">Edit</a></span>
-        <span> | <button (click)="delete()" class="btn btn-sm btn-danger">Delete</button></span>
-    </span>
-</div>
+<app-footer></app-footer>

@@ -1,36 +1,41 @@
 <app-menu></app-menu>
-<div class='component-content'>
-    <div class='lefthalf'>
-        <span class='component-title'>{{title}} </span>
+<div id="page-container">
+    <div id="content-wrap">
+        <div class='component-content'>
+            <div class='lefthalf'>
+                <span class='component-title'>{{title}} </span>
+            </div>
+        </div>
+        <p *ngIf='!lineitem'>Loading....</p>
+        <div *ngIf='lineitem'>
+            <main class="single">
+                <table class="table table-sm">
+
+                    <tr>
+                        <td>
+                            Product:
+                        </td>
+                        <td>
+                            <select [(ngModel)]="lineitem.product" class="rounded" required>
+                                <option *ngFor='let p of products' [ngValue]='p'>{{p.name}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Quantity:
+                        </td>
+                        <td>
+                            <input [(ngModel)]='lineitem.quantity' type="number" min="0" step="1"
+                                data-number-to-fixed="2" class="rounded" required>
+                        </td>
+                    </tr>
+
+
+                </table>
+            </main>
+            <span><button (click)="save()" class="btn btn-sm btn-primary">Save</button></span>
+        </div>
     </div>
 </div>
-<p *ngIf='!lineitem'>Loading....</p>
-<div *ngIf='lineitem'>
-    <main class="single">
-        <table class="table table-sm">
-           
-            <tr>
-                <td>
-                    Product:
-                </td>
-                <td>
-                    <select [(ngModel)]="lineitem.product" class="rounded">
-                        <option *ngFor='let p of products' [ngValue]='p'>{{p.name}}</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Quantity:
-                </td>
-                <td>
-                    <input [(ngModel)]='lineitem.quantity' type="number" min="0" step="1" data-number-to-fixed="2"
-                        class="rounded">
-                </td>
-            </tr>
-
-
-        </table>
-    </main>
-    <span><button (click)="save()" class="btn btn-sm btn-primary">Save</button></span>
-</div>
+<app-footer></app-footer>

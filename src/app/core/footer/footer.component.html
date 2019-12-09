@@ -1,0 +1,9 @@
+<footer>
+    <div>
+        <ul>
+            <li *ngFor= 'let mi of menuItems' title='{{mi.toolTip}}'>
+                <a routerLink='{{mi.href}}'>{{mi.display}}</a>
+            </li>
+        </ul>
+    </div>
+    </footer>
